@@ -1,0 +1,58 @@
+---
+title: "Regression Model"
+author: "Swapna Savalgi"
+date: "11/09/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+Q)Is there a relationship between the number of bicyclists who cross different bridges in New York?
+
+**Loading the Data**
+
+*Library in use:'ggpubr'*
+
+```{r setup, include=FALSE}
+
+library(ggpubr)
+```
+
+**Variable Assignment**
+```{r}
+
+datasets <- read.csv("D:\\MachineLearning\\datasets.csv",header = TRUE)
+is.null(datasets)
+attributes(datasets)
+Williamsburg <- "Williamsburg.Bridge"
+Manhattan <- "Manhattan.Bridge"
+Total <- "Total"
+
+
+```
+
+
+**Data Visualization**
+
+*To compute correlation in R , we use cor() and cor.test()to return both values p value and correlation coefficient*
+
+```{r}
+ggscatter(datasets, x="Williamsburg.Bridge",  y="Total",
+          add = "reg.line",conf.int = TRUE,
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Williamsburg.Bridge", ylab = "Total")
+
+res <- cor.test(datasets$Williamsburg.Bridge,datasets$Total, method=c("pearson"))
+res
+
+
+ggscatter(datasets, x="Manhattan.Bridge",  y="Total",
+          add = "reg.line",conf.int = TRUE,
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Manhattan.Bridge", ylab = "Total")
+
+res <- cor.test(datasets$Manhattan.Bridge,datasets$Total, method=c("pearson"))
+res
+
+```
+
