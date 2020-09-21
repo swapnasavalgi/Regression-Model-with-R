@@ -1,0 +1,22 @@
+---
+title: "ScatterPlot with ggplot2"
+output:
+  html_document:
+    df_print: paged
+Author: Swapna Savalgi
+---
+
+```{r}
+
+data <- read.csv("D:\\MachineLearning\\datasets.csv", header = TRUE)
+
+```
+
+```{r}
+glimpse(data)
+```
+
+```{r}
+ggplot(data, aes(x = Manhattan.Bridge , y = Total , color= High.Temp..Â.F. , size = Low.Temp..Â.F.)) + geom_point() + labs(title = "No.of Cyclist in Manhattan Bridge when the temperature was High" , x= "No.of cyclist in Manhattan Bridge",y= "Total no.of cyclist in New York State")
+```
+
